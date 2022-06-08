@@ -24,6 +24,8 @@ var song = $(".song");
 const app = {
     isRandom: false,
     isRepeat: false,
+    isPlaying: false,
+    isPressSpace: false,
     config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
     currentIndex: 0,
     songs: [{
@@ -76,6 +78,36 @@ const app = {
         singer: "MCK",
         path: "./asset/audio/Yêu em qua dòng tin nhắniêu iem qua dòng tin nhắn  Ngơ ft Nân Lyrics Video.mp3",
         image: "./asset/img/Yêu em qua dòng tin nhắn.jpg",
+    }, {
+        name: "Anh biết",
+        singer: "MCK",
+        path: "./asset/audio/Anh biết  Ngơ Video Lyrics.mp3",
+        image: "./asset/img/Anh biết.jpg",
+    }, {
+        name: "Em đã ngủ chưa",
+        singer: "MCK",
+        path: "./asset/audio/Em Đã Ngủ Chưa  Ngơ  Lyrics Video.mp3",
+        image: "./asset/img/Em đã ngủ chưa.jpg",
+    }, {
+        name: "Ngơ",
+        singer: "MCK",
+        path: "./asset/audio/Ngơ  MCK  Ngày mai anh viết cho em hôm nay một bản tình ca   MCK indie.mp3",
+        image: "./asset/img/Ngơ.jpg",
+    }, {
+        name: "Tự sự",
+        singer: "Orange",
+        path: "./asset/audio/Orange  Tự Sự ft Thuận Nguyễn  Qua Bển Làm Chi OST  Phim đang chiếu tại rạp.mp3",
+        image: "./asset/img/Tự sự.jpg",
+    }, {
+        name: "Về bên anh",
+        singer: "Jack",
+        path: "./asset/audio/Về Bên AnhLofi Ver Jack x Mihle  Lyric Video.mp3",
+        image: "./asset/img/Về bên anh.jpg",
+    }, {
+        name: "Yêu thương ngày đó",
+        singer: "Soobin Hoàng Sơn",
+        path: "./asset/audio/Yêu Thương Ngày Đó  Soobin Hoàng Sơn.mp3",
+        image: "./asset/img/Yêu thương ngày đó.jpg",
     }, ],
 
     // lưu các setting vào localStorage
@@ -157,7 +189,7 @@ const app = {
             cdThumbAnimate.play();
         };
 
-        // khi dừng quay 
+        // khi dừng quay
         audio.onpause = () => {
             app.isPlaying = false;
             playing.classList.remove("playing");
@@ -240,6 +272,19 @@ const app = {
 
             thumb.classList.add("animation");
         };
+
+        // xử lý khi ấN phím arrow, space
+        document.addEventListener("keydown", (e) => {
+            if (e.code === "Space") {
+                playBtn.click();
+            }
+            if (e.code === "ArrowRight") {
+                btnNext.click();
+            }
+            if (e.code === "ArrowLeft") {
+                btnPrev.click();
+            }
+        });
     },
     // hiển thị bài hát hiển tại
     loadCurrentSong: function() {

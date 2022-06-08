@@ -168,6 +168,7 @@ header h2 {
 }
 
 .song:active {
+    /* background-color: #ee4a75; */
     opacity: 0.4;
 }
 
