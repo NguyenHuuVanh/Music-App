@@ -8,4 +8,4 @@ with functions :
 - next a song
 - back to previous a song
 - replay a song
-- random song
+- random a song
